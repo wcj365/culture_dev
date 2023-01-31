@@ -8,7 +8,7 @@ import streamlit as st
 st.title("Individualism vs Collectivism (IDV)")
 st.markdown("## Does culture correlate with development?")
 
-df = pd.read_csv("../data/results.csv")
+df = pd.read_csv("results.csv")
 
 p_value_cutoff = st.sidebar.slider('P-value cutoff', 0.00, 1.00, 0.05, 0.01)
 
@@ -29,7 +29,7 @@ df_topic = df_filter[df_filter["Topic"] == topic]
 indicator_list = list(df_topic["Indicator Code"].unique())
 
 indicator = st.selectbox('Select an Indicator', indicator_list)
-df_series = pd.read_csv("../data/WDISeries.csv")
+df_series = pd.read_csv("WDISeries.csv")
 indicator_row = df_series[df_series["Series Code"] == indicator].head(1)
 indicator_name = indicator_row["Indicator Name"].values[0]
 long_definition = indicator_row["Long definition"].values[0]
